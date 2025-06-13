@@ -58,8 +58,9 @@
     iFrame.parentNode.replaceChild(iFrame.cloneNode(true), iFrame);
   }
 document.addEventListener('keydown', function(event) {
-  event.preventDefault();
+  
   if (event.key === 'Enter') {
+    event.preventDefault();
     // Действия при нажатии Enter
     console.log("Нажата клавиша Enter");
     setTimeout(()=>{
