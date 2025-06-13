@@ -6,7 +6,7 @@
   </head>
   <body>
     <h1>toGoWithProxy:</h1>
-<form action="/frame" method="get">
+<form action="/frame" method="post">
   <input type="text" id="text">
   <button type="button" id="toGo">toGo</button>
 </form>
@@ -23,7 +23,7 @@ src="">
   console.log(input);
   document.querySelector("#toGo").addEventListener("click",()=>{
     document.querySelector("#inlineFrameExampleTwo").setAttribute("src",`${input}`);
-    window.location.href=`${input}`;
+    // window.location.href=`${input}`;
   });
 
 </script>
