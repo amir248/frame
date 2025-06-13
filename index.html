@@ -26,7 +26,8 @@
   const frame = document.querySelector('#inlineFrameExampleTwo');
 
   // Добавляем обработчик события клика
-  button.addEventListener('click', () => {
+  button.addEventListener('click', onClickButton);
+  function onClickButton() {
     // Получаем значение из инпута
     const url = input.value;
     
@@ -50,12 +51,18 @@
     frame.onerror = () => {
       alert('Ошибка загрузки страницы');
     };
-  });
+  };
 
   // Функция для перезагрузки фрейма
   function reloadFrame(iFrame) {
     iFrame.parentNode.replaceChild(iFrame.cloneNode(true), iFrame);
   }
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Enter') {
+    // Действия при нажатии Enter
+    onClickButton();
+  }
+});
 </script>
 
   </body>
