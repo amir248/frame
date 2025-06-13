@@ -5,25 +5,26 @@
     <title></title>
   </head>
   <body>
-    <h1>search</h1>
-    <!-- <iframe
-      id="inlineFrameExample"
-      title="Inline Frame Example"
-      width="100%"
-      height="700"
-      src="https://www.linkedin.com/">
-</iframe> -->
+    <h1>toGoWithProxy:</h1>
+<form action="/" method="get">
+  <input type="text" id="text">
+  <button type="button" id="toGo">toGo</button>
+</form>
 <iframe
 id="inlineFrameExampleTwo"
 title="Inline Frame Example Superpru"
 width="100%"
 height="700"
-src="http://23.227.38.183/">
-<form action="https://www.google.com" method="get">
-  <input type="text">
-  <button type="submit">toGo</button>
-</form>
-</iframe>
+src="">
 
+</iframe>
+<script>
+  let input=document.querySelector("#text").value;
+  console.log(input);
+  document.querySelector("#toGo").addEventListener("click",()=>{
+    document.querySelector("#inlineFrameExampleTwo").setAttribute("src",`${input}`);
+  });
+
+</script>
   </body>
 </html>
