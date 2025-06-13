@@ -10,27 +10,53 @@
   <input type="text" id="text">
   <button type="button" id="toGo">toGo</button>
 </form>
-<iframe
-id="inlineFrameExampleTwo"
-title="Inline Frame Example Superpru"
-width="100%"
-height="700"
-src="">
 
+<iframe
+  id="inlineFrameExampleTwo"
+  title="Inline Frame Example Superpru"
+  width="100%"
+  height="700"
+  src="">
 </iframe>
+
 <script>
-  let input=document.querySelector("#text").value;
-  console.log(input);
-  document.querySelector("#toGo").addEventListener("click",()=>{
-    document.querySelector("#inlineFrameExampleTwo").setAttribute("src",`${input}`);
-    // window.location.href=`${input}`;
-        // document.querySelector("#inlineFrameExampleTwo").contentDocument.location.reload(true);
-            document.getElementById('inlineFrameExampleTwo').src = document.getElementById('inlineFrameExampleTwo').src;
+  // Получаем элементы DOM
+  const input = document.querySelector('#text');
+  const button = document.querySelector('#toGo');
+  const frame = document.querySelector('#inlineFrameExampleTwo');
+
+  // Добавляем обработчик события клика
+  button.addEventListener('click', () => {
+    // Получаем значение из инпута
+    const url = input.value;
+    
+    // Проверяем корректность URL
+    if (!url) {
+      alert('Введите URL');
+      return;
+    }
+    
+    // Устанавливаем новый адрес фрейма
+    frame.src = url;
+    
+    // Добавляем обработчик загрузки для проверки
+    frame.onload = () => {
+      if (frame.contentWindow.location.href !== url) {
+        alert('Ошибка загрузки страницы');
+      }
+    };
+    
+    // Добавляем обработку ошибок
+    frame.onerror = () => {
+      alert('Ошибка загрузки страницы');
+    };
   });
-        function reloadFrame(iFrame) {
-            iFrame.parentNode.replaceChild(iFrame.cloneNode(true), iFrame);
-        }
-                document.getElementById('your-iframe').src = document.getElementById('your-iframe').src;
+
+  // Функция для перезагрузки фрейма
+  function reloadFrame(iFrame) {
+    iFrame.parentNode.replaceChild(iFrame.cloneNode(true), iFrame);
+  }
 </script>
+
   </body>
 </html>
